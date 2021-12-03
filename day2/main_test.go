@@ -1,29 +1,19 @@
 package main_test
 
 import (
-	"bufio"
-	"bytes"
-	"os"
 	"strconv"
 	"strings"
 	"testing"
+
+	"changkun.de/x/adventOfCode2021/utils"
 )
 
 type pos struct {
 	x, y int
 }
 
-func reader(t *testing.T, fname string) *bufio.Scanner {
-	b, err := os.ReadFile(fname)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	return bufio.NewScanner(bytes.NewReader(b))
-}
-
 func calpos(t *testing.T, fname string) pos {
-	s := reader(t, fname)
+	s := utils.Read(t, fname)
 	p := pos{}
 
 	for s.Scan() {
@@ -55,7 +45,7 @@ func TestPart1(t *testing.T) {
 }
 
 func calpos2(t *testing.T, fname string) pos {
-	s := reader(t, fname)
+	s := utils.Read(t, fname)
 	p := pos{}
 	aim := 0
 
