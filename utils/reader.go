@@ -4,14 +4,13 @@ import (
 	"bufio"
 	"bytes"
 	"os"
-	"testing"
 )
 
-func Read(t *testing.T, fname string) *bufio.Scanner {
+func Read(fname string) (*bufio.Scanner, error) {
 	b, err := os.ReadFile(fname)
 	if err != nil {
-		t.Fatal(err)
+		return nil, err
 	}
 
-	return bufio.NewScanner(bytes.NewReader(b))
+	return bufio.NewScanner(bytes.NewReader(b)), nil
 }
